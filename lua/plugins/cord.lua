@@ -6,12 +6,16 @@ return {
     config = function()
       require("cord").setup({
         editor = {
-          client = "neovim",
+          client = "lazyvim",
         },
 
         display = {
           theme = "catppuccin",
           flavor = "light",
+        },
+
+        idle = {
+          enabled = false,
         },
       })
     end,

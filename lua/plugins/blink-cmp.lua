@@ -25,12 +25,7 @@ return {
 
         selection = {
           preselect = true,
-          -- To disable preselect for markdown files:
-          -- preselect = function(ctx) return vim.bo.filetype ~= 'markdown' end,
-
           auto_insert = true,
-          -- To disable auto insert for markdown files:
-          -- auto_insert = function(ctx) return vim.bo.filetype ~= 'markdown' end,
         },
 
         cycle = {

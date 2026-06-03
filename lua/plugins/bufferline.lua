@@ -4,12 +4,10 @@ return {
   event = { "BufReadPre", "BufNewFile" }, -- Load this plugin when opening a buffer
 
   opts = function(_, opts)
-    -- Apply Catppuccin-specific highlights if the current colorscheme is "catppuccin"
     if vim.g.colors_name and vim.g.colors_name:find("catppuccin") then
       opts.highlights = require("catppuccin.groups.integrations.bufferline").get()
     end
 
-    -- Override or add custom highlights
     opts.highlights = {
       separator = {
         fg = "#4c4f69",
@@ -39,7 +37,6 @@ return {
       },
     }
 
-    -- Bufferline behavior and appearance settings
     opts.options = {
       separator_style = { "|", "|" },
       indicator = { style = "none" },
@@ -52,10 +49,10 @@ return {
 
       diagnostics_indicator = function(count, level, diagnostics_dict, context)
         local icons = {
-          error = "󰅚", -- Icon for error
-          warning = "⚠", -- Icon for warning
-          info = "ℹ", -- Icon for info
-          hint = "󰌶", -- Icon for hint
+          error = "󰅚",
+          warning = "⚠",
+          info = "ℹ",
+          hint = "󰌶",
         }
 
         local highest_level

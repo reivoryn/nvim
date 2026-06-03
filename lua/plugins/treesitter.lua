@@ -22,7 +22,7 @@ return {
       "tsx",
     },
 
-    highlight = { enable = true }, -- Enable syntax highlighting using Treesitter
-    indent = { enable = false }, -- Disable automatic indentation by Treesitter
+    highlight = { enable = true },
+    indent = { enable = false },
   },
 }
