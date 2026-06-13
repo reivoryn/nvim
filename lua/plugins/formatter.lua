@@ -6,6 +6,8 @@ return {
     format_on_save = true,
 
     formatters_by_ft = {
+      c = { "clang-format" },
+      cpp = { "clang-format" },
       javascript = { "prettierd" },
       typescript = { "prettierd" },
       javascriptreact = { "prettierd" },
