@@ -1,14 +1,15 @@
 return {
-  "nvim-treesitter/nvim-treesitter", -- Treesitter configurations and abstraction layer
-  build = ":TSUpdate", -- Command to run after the plugin is installed to update Treesitter parsers
-  commit = "42fc28ba918343ebfd5565147a42a26580579482", -- Latest releases had so many breaking changes
-  event = { "BufReadPre", "BufNewFile" }, -- Load this plugin when opening a buffer
-  lazy = false,
+  "nvim-treesitter/nvim-treesitter",
+  branch = "main",
+  build = ":TSUpdate",
+  config = function()
+    local ts = require("nvim-treesitter")
 
-  opts = {
-    ensure_installed = {
+    ts.install({
       "bash",
       "css",
+      "c",
+      "cpp",
       "html",
       "http",
       "json",
@@ -17,9 +18,15 @@ return {
       "markdown",
       "typescript",
       "tsx",
-    },
+    })
 
-    highlight = { enable = true },
-    indent = { enable = false },
-  },
+    vim.api.nvim_create_autocmd("FileType", {
+      callback = function(args)
+        pcall(vim.treesitter.start, args.buf)
+      end,
+    })
+
+    vim.opt.foldmethod = "expr"
+    vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+  end,
 }

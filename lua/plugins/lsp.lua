@@ -1,12 +1,20 @@
 return {
   {
     "neovim/nvim-lspconfig", -- Collection of LSP server configurations
-    ft = { "javascript", "javascriptreact", "typescript", "typescriptreact", "lua", "html", "css", "json" }, -- Load this plugin based on filetypes
+    ft = { "c", "cpp", "javascript", "javascriptreact", "typescript", "typescriptreact", "lua", "html", "css", "json" }, -- Load this plugin based on filetypes
 
     config = function()
       -- Configuration for TypeScript & JavaScript LSP (using ts_ls because tsserver has issues)
       vim.lsp.config("ts_ls", {
         filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+        on_attach = function(client, bufnr)
+          -- Set keymaps or other configurations
+        end,
+      })
+
+      -- Configuration for C & C++ LSP
+      vim.lsp.config("clangd", {
+        filetypes = { "c", "cpp" },
         on_attach = function(client, bufnr)
           -- Set keymaps or other configurations
         end,
@@ -65,6 +73,7 @@ return {
         },
       })
 
+      vim.lsp.enable("clangd")
       vim.lsp.enable("lua_ls")
     end,
   },
