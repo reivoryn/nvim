@@ -87,40 +87,79 @@ vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "Toggle Neo
 vim.api.nvim_set_keymap("n", "<leader>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
 
 -- SNACKS
--- Open Recent Files
-vim.keymap.set("n", "<leader>sr", function()
-  vim.cmd("lua Snacks.dashboard.pick('oldfiles')")
-end, { desc = "Open recent files (Snacks)" })
--- Show Notifications
+-- Diagnostics
+vim.keymap.set("n", "<leader>sd", function()
+  vim.cmd("lua Snacks.picker.diagnostics()")
+end, { desc = "Diagnostics (Snacks)" })
+
+-- Explorer
+-- vim.keymap.set("n", "<leader>e", function()
+--   vim.cmd("lua Snacks.explorer()")
+-- end, { desc = "Explorer (Snacks)" })
+
+-- Find Files
+vim.keymap.set("n", "<leader>sf", function()
+  vim.cmd("lua Snacks.picker.files()")
+end, { desc = "Find Files (Snacks)" })
+
+-- Grep
+vim.keymap.set("n", "<leader>sg", function()
+  vim.cmd("lua Snacks.picker.grep()")
+end, { desc = "Grep (Snacks)" })
+
+-- LazyGit
+vim.keymap.set("n", "<leader>sl", function()
+  vim.cmd("lua Snacks.lazygit()")
+end, { desc = "LazyGit (Snacks)" })
+
+-- Notification History
 vim.keymap.set("n", "<leader>sn", function()
   vim.cmd("lua Snacks.notifier.show_history()")
-end, { desc = "Show notification history (Snacks)" })
+end, { desc = "Notification History (Snacks)" })
 
--- TOGGLETERM
--- Toggle Floating Terminal
-vim.keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", { desc = "Open Floating Terminal" })
--- Toggle Horizontal Terminal
-vim.keymap.set("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<CR>", { desc = "Open Horizontal Terminal" })
--- Toggle Vertical Terminal
-vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<CR>", { desc = "Open Vertical Terminal" })
+-- Projects
+vim.keymap.set("n", "<leader>sp", function()
+  vim.cmd("lua Snacks.picker.projects()")
+end, { desc = "Projects (Snacks)" })
 
--- ==================================================
+-- Recent
+vim.keymap.set("n", "<leader>sr", function()
+  vim.cmd("lua Snacks.picker.recent()")
+end, { desc = "Recent (Snacks)" })
+
 -- TERMINAL
--- ==================================================
+-- Toggle Floating Terminal
+vim.keymap.set({ "n", "t" }, "<leader>tf", function()
+  require("snacks").terminal.toggle(nil, {
+    win = {
+      position = "float",
+      border = "single",
+      title = " Terminal ",
+      title_pos = "center",
+    },
+  })
+end, { desc = "Floating Terminal (Snacks)" })
 
--- Dedicated terminals
-vim.keymap.set("n", "<leader>t1", function()
-  require("toggleterm.terminal").Terminal:new({ count = 1 }):toggle()
-end, { desc = "Toggle Terminal 1" })
-vim.keymap.set("n", "<leader>t2", function()
-  require("toggleterm.terminal").Terminal:new({ count = 2 }):toggle()
-end, { desc = "Toggle Terminal 2" })
-vim.keymap.set("n", "<leader>t3", function()
-  require("toggleterm.terminal").Terminal:new({ count = 3 }):toggle()
-end, { desc = "Toggle Terminal 3" })
+-- Toggle Horizontal Terminal
+vim.keymap.set({ "n", "t" }, "<leader>th", function()
+  require("snacks").terminal.toggle(nil, {
+    win = {
+      height = 10,
+      position = "bottom",
+      title = "",
+    },
+  })
+end, { desc = "Horizontal Terminal (Snacks)" })
 
--- Exit terminal mode
-vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
+-- Toggle Vertical Terminal
+vim.keymap.set({ "n", "t" }, "<leader>tv", function()
+  require("snacks").terminal.toggle(nil, {
+    win = {
+      position = "right",
+      width = 40,
+    },
+  })
+end, { desc = "Vertical Terminal (Snacks)" })
 
 -- ==================================================
 -- WINDOW MANAGEMENT

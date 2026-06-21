@@ -32,3 +32,13 @@ vim.diagnostic.config({
   update_in_insert = false,
   float = { border = "single" },
 })
+
+-- Override Snacks terminal Esc behavior to immediately exit terminal mode (no double-press delay)
+vim.api.nvim_create_autocmd("TermOpen", {
+  callback = function()
+    vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {
+      buffer = 0,
+      silent = true,
+    })
+  end,
+})

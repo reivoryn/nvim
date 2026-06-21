@@ -68,7 +68,7 @@ return {
         ["P"] = {
           "toggle_preview",
           config = {
-            use_float = true,
+            use_float = false,
           },
         },
       },

@@ -1,27 +1,23 @@
 return {
   "folke/snacks.nvim", -- Collection of QoL plugins
   commit = "454ba02d69347c0735044f159b95d2495fc79a73", -- Latest update had text visual bug(?) for me when opening and closing neo-tree
-  event = "VimEnter", -- Load this plugin when entering Neovim
+  lazy = false, -- Load this plugin immediately, not lazily
+  priority = 1000,
 
   opts = {
     dashboard = {
       preset = {
         header = [[
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣷⣶⣶⣶⣤⡀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⡇⠀
-⢠⣴⣿⣶⣶⡀⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⣿⣿⡟⠿⣷⠀
-⢿⣿⣿⣿⣿⣇⡀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠆⠀⠀
-⠘⢿⣿⣿⣿⣿⣿⣿⣶⣦⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀
-⠀⠀⠉⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣀⣀⣀
-⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠁
-⠀⠀⠀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀
+⠀⠀⠀⠀⠀⠀⣠⣾⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢰⣽⣽⣽⣽⡦⣤⣦⣤⣄⡀⣠⣾⣽⣽⣇⠀⠀⠀
+⠀⠀⠀⢀⣠⣽⣽⣽⣽⣽⣽⣽⣽⣽⣽⣽⣽⣽⣽⣽⣽⠀⠀⠀
+⠀⢀⡴⠋⠛⠿⠿⠿⠿⠟⠛⠁⠈⠛⠿⣽⣽⣽⣽⣽⣽⡀⠀⠀
+⠀⡾⠀⠀⠀⠀⠀⠀⠐⠂⠀⠀⠀⠀⠠⠀⠉⠙⠛⠛⠛⠙⣆⠀
+⢸⠃⠀⠀⠀⠀⠀⡴⠒⣆⠀⠀⠀⠀⣠⢤⡀⠀⠀⠀⠀⠀⠸⡇
+⣾⠀⠀⢠⢤⣤⡀⠻⠽⠋⠀⠀⠀⠀⢿⣶⡟⠀⠀⠀⠀⠀⠀⣽
+⢸⡄⠀⠈⠀⠀⠁⠀⠀⠀⠦⣾⣤⠄⠀⠀⠜⠼⡶⡆⠀⠀⢠⡇
+⠀⢳⡄⠀⠀⠀⠀⠀⠀⠀⠀⠲⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡾⠁
+⠀⢧⣙⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠞⠁⠀
 ]],
 
         keys = {
@@ -50,7 +46,7 @@ return {
             icon = " ",
             key = "r",
             desc = "Recent Files",
-            action = ":lua Snacks.dashboard.pick('oldfiles')",
+            action = ":lua Snacks.picker.recent()",
           },
 
           {
@@ -78,6 +74,24 @@ return {
       hl = "SnacksIndent",
     },
 
+    lazygit = {
+      enabled = true,
+      configure = false,
+
+      win = {
+        border = "single",
+      },
+    },
+
+    terminal = {
+      enabled = true,
+      win = {
+        wo = {
+          winbar = "",
+        },
+      },
+    },
+
     scroll = {
       animate = {
         duration = { step = 15, total = 250 },
@@ -94,6 +108,22 @@ return {
     notifier = { enabled = true, timeout = 3000, style = "compact" },
 
     picker = {
+      sources = {
+        explorer = {
+          auto_close = true,
+          trash = false,
+
+          win = {
+            list = {
+              keys = {
+                ["S"] = "edit_split",
+                ["s"] = "edit_vsplit",
+              },
+            },
+          },
+        },
+      },
+
       layout = {
         preview = "main",
 

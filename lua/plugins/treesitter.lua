@@ -10,6 +10,7 @@ return {
       "css",
       "c",
       "cpp",
+      "go",
       "html",
       "http",
       "json",
