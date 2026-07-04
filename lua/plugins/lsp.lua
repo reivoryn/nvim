@@ -4,15 +4,15 @@ return {
     ft = {
       "c",
       "cpp",
+      "css",
       "go",
+      "html",
+      "json",
+      "lua",
       "javascript",
       "javascriptreact",
       "typescript",
       "typescriptreact",
-      "lua",
-      "html",
-      "css",
-      "json",
     }, -- Load this plugin based on filetypes
 
     config = function()
@@ -118,7 +118,7 @@ return {
 
       -- Auto install tools (formatters) if not installed
       local mason_registry = require("mason-registry")
-      local tools = { "prettierd", "stylua", "shfmt" }
+      local tools = { "prettierd", "shfmt", "stylua" }
 
       -- Check and install tools if not present
       for _, tool in ipairs(tools) do
@@ -135,7 +135,7 @@ return {
     event = { "BufReadPre", "BufNewFile" }, -- Load this plugin when opening a buffer
 
     opts = {
-      ensure_installed = { "ts_ls", "eslint", "html", "cssls", "jsonls", "tailwindcss" },
+      ensure_installed = { "cssls", "eslint", "html", "jsonls", "tailwindcss", "ts_ls" },
     },
   },
 }
