@@ -17,7 +17,7 @@ return {
 
     config = function()
       -- Configuration for TypeScript & JavaScript LSP (using ts_ls because tsserver has issues)
-      vim.lsp.config("ts_ls", {
+      vim.lsp.config("vtsls", {
         filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
         on_attach = function(client, bufnr)
           -- Set keymaps or other configurations
@@ -135,7 +135,7 @@ return {
     event = { "BufReadPre", "BufNewFile" }, -- Load this plugin when opening a buffer
 
     opts = {
-      ensure_installed = { "cssls", "eslint", "html", "jsonls", "tailwindcss", "ts_ls" },
+      ensure_installed = { "cssls", "eslint", "html", "jsonls", "tailwindcss", "vtsls" },
     },
   },
 }
