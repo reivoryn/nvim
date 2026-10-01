@@ -1,5 +1,5 @@
 return {
-  "mistweaverco/kulala.nvim", -- A fully-featured HTTP-client interface for Neovim
+  "dont-be-evil-company/kulala.nvim", -- A fully-featured HTTP-client interface for Neovim
   ft = { "http", "rest" }, -- Load this plugin based on filetypes
 
   opts = {
